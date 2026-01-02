@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | Chai aur Code</title>
+</head>
+
+<body style="background-color: black; color: white;">
+
+    <!-- Week Container -->
+    <div class="week">
+        <div class="day">Moday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+
+    <script>
+        // 1. Select parent element
+        const week = document.querySelector('.week');
+
+
+        // 2. Access children elements
+        console.log(week.children);
+        // OUTPUT: HTMLCollection(4) [div.day, div.day, div.day, div.day]
+
+        console.log(week.children[1].innerHTML);
+        // OUTPUT: "Tuesday"
+
+
+        // 3. Loop through children
+        for (let i = 0; i < week.children.length; i++) {
+            // console.log(week.children[i].innerHTML);
+
+            // OUTPUT (line by line):
+            // Moday
+            // Tuesday
+            // Wednesday
+            // Thursday
+        }
+
+
+        // 4. Style specific child (Tuesday)
+        week.children[1].style.color = 'orange';
+        // UI OUTPUT: "Tuesday" text becomes orange
+
+
+        // 5. First & last child elements
+        console.log(week.firstElementChild);
+        // OUTPUT: <div class="day">Moday</div>
+
+        console.log(week.lastElementChild);
+        // OUTPUT: <div class="day">Thursday</div>
+
+
+        // 6. Child → Parent → Sibling
+        const dayOne = document.querySelector('.day');
+
+        console.log(dayOne);
+        // OUTPUT: <div class="day">Moday</div>
+
+        console.log(dayOne.parentElement);
+        // OUTPUT: <div class="week">...</div>
+
+        console.log(dayOne.nextElementSibling);
+        // OUTPUT: <div class="day">Tuesday</div>
+
+
+        // 7. Nodes vs Elements
+        console.log('NODES :', week.childNodes);
+    </script>
+
+</body>
+</html>
