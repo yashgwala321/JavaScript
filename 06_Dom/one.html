@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM Learning</title>
+</head>
+
+<body>
+    <div class="bg-black">
+        <h1>DOM learning on Chai aur Code</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+        <!-- Student Table -->
+        <table border="1">
+            <tr>
+                <th>Student Name</th>
+                <th>Student ID</th>
+            </tr>
+            <tr>
+                <td>Yash Gwala</td>
+                <td>2025101</td>
+            </tr>
+            <tr>
+                <td>Vijay Singh</td>
+                <td>2025102</td>
+            </tr>
+        </table>
+
+        <!-- Demo List -->
+        <ul>
+            <li class="item">Demo 1</li>
+            <li class="item">Demo 2</li>
+            <li class="item">Demo 3</li>
+            <li class="item">Demo 4</li>
+        </ul>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        /* =========================
+           LIST ITEMS STYLING
+           ========================= */
+
+        const listItems = document.querySelectorAll('.item');
+
+        listItems.forEach((item) => {
+            item.style.color = 'red';
+        });
+
+
+        /* =========================
+           TABLE STYLING
+           Highlight only Vijay Singh
+           ========================= */
+
+        const tableCells = document.querySelectorAll('td');
+
+        tableCells.forEach((cell) => {
+            if (cell.innerText === 'Vijay Singh') {
+                cell.style.color = 'blue';
+            }
+        });
+    </script>
+</body>
+</html>
