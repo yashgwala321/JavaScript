@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai Aur Code | DOM</title>
+</head>
+
+<body style="background-color: black; color:white;">
+
+    <!-- Language List -->
+    <ul class="language">
+        <li>javascript</li>
+    </ul>
+
+</body>
+
+<script>
+    /* ===============================
+       CREATE using innerHTML (Basic)
+       =============================== */
+
+    function addLanguage(langName) {
+        const li = document.createElement("li")
+        li.innerHTML = langName
+        document.querySelector(".language").appendChild(li)
+    }
+
+    addLanguage("python")
+    addLanguage("c")
+    addLanguage("java")
+
+
+    /* ===============================
+       CREATE using createTextNode (Optimized)
+       =============================== */
+
+    function addOptilanguage(langName) {
+        const li = document.createElement("li")
+
+        // langName ka text node banta hai
+        // aur us text ko <li> ke andar add kar dete hain
+        li.appendChild(document.createTextNode(langName))
+
+        document.querySelector(".language").appendChild(li)
+    }
+
+    addOptilanguage("yash")
+    addOptilanguage("Code")
+
+
+    /* ===============================
+       EDIT: Replace 2nd list item
+       =============================== */
+
+    const secondLang = document.querySelector("li:nth-child(2)")
+    const newLi = document.createElement("li")
+    newLi.textContent = "Mojo"
+    secondLang.replaceWith(newLi)
+
+
+    /* ===============================
+       EDIT: Replace first item directly
+       =============================== */
+
+    const firstLang = document.querySelector("li:first-child")
+    firstLang.outerHTML = "<li>Type</li>"
+
+
+    /* ===============================
+       REMOVE: Delete last item
+       =============================== */
+
+    const lastLang = document.querySelector("li:last-child")
+    lastLang.remove()
+
+</script>
+</html>
