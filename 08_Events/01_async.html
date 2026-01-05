@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async JavaScript</title>
+</head>
+<body>
+
+    <h1>Asynchronous</h1>
+    <button id="stop">Stop</button>
+
+    <script>
+        // 1️⃣ After 2 seconds console me print hoga
+        const printJS = setTimeout(() => {
+            console.log("JavaScript");
+        }, 2000);
+
+
+        // 2️⃣ Har 5 second me console me print hoga
+        const sayYash = () => {
+            console.log("Hello Guys");
+        };
+        const intervalId = setInterval(sayYash, 5000);
+
+
+        // 3️⃣ 4 second baad h1 ka text change hoga
+        const changeText = () => {
+            document.querySelector("h1").innerHTML = "Text Changed";
+        };
+        const timeoutId = setTimeout(changeText, 4000);
+
+
+        // 4️⃣ Stop button click par timeout cancel hoga
+        document.querySelector("#stop").addEventListener("click", () => {
+            clearTimeout(timeoutId);
+            console.log("Text change stopped");
+        });
+
+    </script>
+</body>
+</html>
+
+<!-- 🔹 Asynchronous JavaScript kya hota hai?
+
+JavaScript normally synchronous hoti hai
+(matlab line-by-line execute hoti hai)
+
+Lekin setTimeout aur setInterval JavaScript ko asynchronous bana dete hain
+→ ye background mein wait karte hain
+→ baaki code ko block nahi karte -->
+
+<!-- 🔹 setTimeout():- Kisi function ko sirf ek baar, given time ke baad chalana. -->
+
+<!-- 🔹 clearTimeout():- setTimeout ko cancel karna
+    ex:-
+    const timeoutId = setTimeout(changeText, 4000);
+    clearTimeout(timeoutId);
+
+    Real life example:
+    Alarm lagaya, phir cancel kar diya ⏰❌ -->
+
+<!-- 🔹 setInterval():- Kisi function ko baar-baar, fixed time ke gap ke baad chalana.
+
+    Har 5 second me "Hello Guys" print hota rahega,Ye loop jaisa behave karta hai Jab tak manually stop na karo -->
+
+<!-- 🔹 clearInterval():- setInterval ko stop karna -->
+
+
