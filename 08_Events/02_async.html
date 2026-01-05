@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async JavaScript</title>
+</head>
+<body>
+!
+    <h1>Asynchronous</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+</body>
+
+<script>
+    // ---------------- BASIC setInterval examples ----------------
+
+    setInterval(function(){
+        // console.log("Yash")
+    },1000)
+
+    const say = function(){
+        // console.log("Hey");
+    }
+    setInterval(say,1000)
+
+    const say1 = function(string){
+        // console.log(string);
+    }
+    const interValID = setInterval(say1,1000,"hi")
+
+
+    // ---------------- Start & Stop Button Logic ----------------
+
+    let start;
+
+    document.querySelector('#start').addEventListener("click",function(){
+        start = setInterval(function(){
+            console.log("Start SuccessFullyy");
+        },1000)
+    })
+
+    document.querySelector('#stop').addEventListener("click",function(){
+        clearInterval(start)
+    })    
+
+</script>
+</html>
+
+<!--
+===================== TODAY'S LEARNING NOTES =====================
+
+1) setInterval kya karta hai:
+   - setInterval ek function ko bar-bar run karta hai
+   - given time interval (milliseconds) ke baad
+
+2) setInterval ke 3 tarike:
+   - Direct anonymous function
+   - Function variable ke through
+   - Function ke sath argument pass karke
+
+3) clearInterval:
+   - setInterval ko stop karne ke liye use hota hai
+   - usko wahi ID chahiye jo setInterval return karta hai
+
+4) Start / Stop button logic:
+   - Start button → setInterval start karta hai
+   - Stop button → clearInterval se interval band karta hai
+
+5) Variable scope (IMPORTANT):
+   - setInterval ki ID ko bahar store kiya
+   - taaki Stop button usko access kar sake
+
+6) Implicit global se bachav:
+   - Variable hamesha let / const se declare karo
+   - bina let/const likhne se variable global ban jata hai
+
+===============================================================
+-->
