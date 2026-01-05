@@ -3,42 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Async JavaScript</title>
+    <title>Async</title>
 </head>
 <body>
-
     <h1>Asynchronous</h1>
     <button id="stop">Stop</button>
-
 </body>
-    <script>
-        // 1️⃣ After 2 seconds console me print hoga
-        const printJS = setTimeout(() => {
-            console.log("JavaScript");
-        }, 2000);
+<script>
+    
+    setTimeout(function(){
+        console.log("JavaScript");
+    },2000)
 
+    const sayYash = function(){
+        console.log("Hello Guys");
+    }
+    setInterval(sayYash,5000)
 
-        // 2️⃣ Har 5 second me console me print hoga
-        const sayYash = () => {
-            console.log("Hello Guys");
-        };
-        const intervalId = setInterval(sayYash, 5000);
+    const changeText = function(){
+        document.querySelector('h1').innerHTML="Change tha Text"
+    }
+    
+    const changeME = setTimeout(changeText,4000)
 
-
-        // 3️⃣ 4 second baad h1 ka text change hoga
-        const changeText = () => {
-            document.querySelector("h1").innerHTML = "Text Changed";
-        };
-        const timeoutId = setTimeout(changeText, 4000);
-
-
-        // 4️⃣ Stop button click par timeout cancel hoga
-        document.querySelector("#stop").addEventListener("click", () => {
-            clearTimeout(timeoutId);
-            console.log("Text change stopped");
-        });
-
-    </script>
+    document.querySelector("#stop").addEventListener("click",function(){
+        clearTimeout(changeME)
+        console.log("Stop");
+    })
+</script>
 </html>
 
 <!-- 🔹 Asynchronous JavaScript kya hota hai?
