@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Number Guessing Game</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+
+  <body style="background-color: #212121; color: #fff">
+    <h1>Start should change the Background color every second</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+  </body>
+
+  <script>
+    // ---------------- RANDOM COLOR GENERATOR ----------------
+
+        const randomColor = function(){
+            const hex = '0123456789ABCDEF';
+            let color = '#';
+            for(let i=0; i<6;i++){
+                color += hex[Math.floor(Math.random() * 16)];
+            }
+            return color
+        }
+        console.log(randomColor())
+
+
+    // ---------------- START / STOP LOGIC ----------------
+
+        let stop;
+
+        document.querySelector('#start').addEventListener("click",function(){
+           if(stop == null){
+                stop = setInterval(function(){
+                   document.body.style.backgroundColor = randomColor();
+                },1000)
+           }
+        })
+
+        document.querySelector('#stop').addEventListener("click",function(){
+            clearInterval(stop)
+            stop = null
+        })
+  </script>
+</html>
+
+<!--
+===================== TODAY'S LEARNING NOTES =====================
+
+1) Random Color Generator:
+   - Hex color banane ke liye 0–9 aur A–F ka use hota hai
+   - Loop 6 times chala kar ek valid hex color banaya
+   - Math.random() se random index nikala
+
+2) setInterval ka use:
+   - setInterval har 1 second me function run karta hai
+   - Yaha background color continuously change ho raha hai
+
+3) clearInterval:
+   - clearInterval se running interval stop hota hai
+   - Same variable (stop) me interval ki ID store ki
+
+4) Start / Stop button logic:
+   - Start button interval start karta hai
+   - Stop button interval ko completely band karta hai
+
+5) Multiple interval bug se bachav:
+   - if(stop == null) condition lagayi
+   - Isse Start ko baar-baar click karne par multiple interval nahi bante
+
+6) Variable scope:
+   - stop variable bahar declare kiya
+   - taaki Start aur Stop dono usko access kar saken
+
+===============================================================
+-->
