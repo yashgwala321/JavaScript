@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request</title>
+</head>
+
+<style>
+    .box{
+        width: 200px;
+        height: 150px;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 5px;
+        display: none;
+        padding: 15px;
+        margin-top: 25px;
+    }
+</style>
+
+<body style="background-color: #212121;">
+    
+<!-- Value	State	Description
+        0	UNSENT	Client has been created. open() not called yet.
+        1	OPENED	open() has been called.
+        2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+        3	LOADING	Downloading; responseText holds partial data.
+        4	DONE	The operation is complete. -->
+
+     <button class="btn">Show Data</button>   
+     <div class="box"></div>
+
+</body>
+
+<script>
+
+    // ---------------- API SETUP ----------------
+
+    const requestUrl = "https://api.github.com/users/yashgwala321"
+    const xhr = new XMLHttpRequest()
+    const btn = document.querySelector('.btn')
+    const result = document.querySelector('.box')
+
+    let userData = null
+
+
+    // ---------------- API REQUEST ----------------
+
+    xhr.open('get', requestUrl)
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 ) {
+            userData = JSON.parse(this.responseText)
+            console.log(userData)
+        }
+    }
+
+    xhr.send()
+
+
+    // ---------------- BUTTON CLICK ----------------
+
+    btn.addEventListener("click", function () {
+        if (userData == null) return
+
+        result.innerHTML = `
+            <img src="${userData.avatar_url}" width="100">
+            <div>Name :- ${userData.name}</div>
+            <div>Location :- ${userData.location}</div>
+        `
+        result.style.display = "block"
+    })
+
+</script>
+</html>
+
+<!--
+===================== TODAY'S LEARNING NOTES =====================
+
+1) API kya hoti hai:
+   - API ek bridge hoti hai jo server se data laane me help karti hai
+   - Yaha GitHub API se user ka data fetch kiya
+
+2) XMLHttpRequest (XHR):
+   - XHR ek purana but important tarika hai API call karne ka
+   - Isse hum server ko request bhejte hain aur response receive karte hain
+
+3) xhr.open():
+   - Request ka type (GET) aur URL set karta hai
+   - Sirf setup hota hai, request send nahi hoti
+
+4) xhr.send():
+   - Actual request server ko bhejta hai
+
+5) readyState samjho:
+   - 0 → request start nahi hui
+   - 1 → open() call ho chuka
+   - 2 → headers mil chuke
+   - 3 → data aa raha hai
+   - 4 → request complete (DONE)
+
+6) JSON.parse():
+   - Server se data string format me aata hai
+   - JSON.parse usko JavaScript object me convert karta hai
+
+7) Data ko variable me store karna:
+   - userData variable me API ka response store kiya
+   - Taaki baad me button click par use ho sake
+
+8) Button click logic:
+   - Button click hone par fetched data UI me show kiya
+   - innerHTML se image aur text dynamically insert kiya
+
+9) DOM manipulation:
+   - JavaScript se HTML content change kiya
+   - style.display se element show / hide kiya
+
+10) Important concept:
+    - API data asynchronous hota hai
+    - Isliye pehle data fetch hota hai, phir use hota hai
+
+===============================================================
+-->
