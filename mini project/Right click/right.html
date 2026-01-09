@@ -51,23 +51,25 @@
       height: 1px;
       background: #333;
     }
+
+    button{
+      margin-bottom: 10px;
+    }
+    
 </style>
 <body>
-    <p oncontextmenu="bgChange()" class="text">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt culpa
-      quaerat sed autem aperiam
-    </p>
-    <button oncontextmenu="myfun()">click</button>
+    <p oncontextmenu="bgChange()" class="text">Move your mouse over "Click me" and press the right mouse button.</p>
+    <button oncontextmenu="myfun()">Click Me</button>
   </body>
 </html>
 <script>
   function bgChange() {
     let txt = document.querySelector(".text");
     console.log(txt);
-    txt.style.backgroundColor = "red";
-    txt.style.color = "white";
-    txt.style.padding = "10px";
-    txt.innerHTML = "<h4> Yash </h4>";
+    // txt.style.backgroundColor = "#333";
+    // txt.style.color = "white";
+    // txt.style.padding = "5px";
+    txt.innerHTML = "<h4>😂</h4>";
   }
 
   function myfun() {
